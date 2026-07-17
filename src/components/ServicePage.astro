@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { site, serviceNav, areaNav } from "../data/site.js";
+import { site, serviceNav, areaNav, IMG } from "../data/site.js";
 import { serviceNode, breadcrumb, faqNode } from "../lib/schema.js";
 const { svc } = Astro.props;
 const path = `/${svc.slug}/`;
@@ -30,7 +30,7 @@ const others = serviceNav.filter((s) => s.slug !== svc.slug);
 
   <div class="article"><div class="wrap article-grid">
     <div class="prose">
-      <img src={svc.img} alt={svc.heroAlt} width="820" height="462" loading="eager" />
+      <img src={IMG[svc.slug]} alt={svc.heroAlt} width="820" height="462" loading="eager" />
       {svc.intro.map((p) => <p set:html={p} />)}
       {svc.sections.map((sec) => (
         <>

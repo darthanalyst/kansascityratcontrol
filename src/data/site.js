@@ -88,6 +88,21 @@ export const counties = [
   },
 ];
 
+// Stock imagery (Unsplash CDN, free license, hotlink-supported). Relevant per page.
+const U = (id, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+export const IMG = {
+  hero: U("1536622638768-9403a9d35a1a", 1500),
+  "rat-control-in-kansas-city": U("1569169373444-1533c948aee9"),
+  "rat-exterminator-in-kansas-city": U("1566324896857-03bf006cb4ed"),
+  "rat-removal-in-kansas-city": U("1575378064390-5a323bbac5d7"),
+  "rat-inspection-in-kansas-city": U("1676630656246-3047520adfdf"),
+  "rodent-exclusion-in-kansas-city": U("1607400201515-c2c41c07d307"),
+  "attic-rat-cleanup-in-kansas-city": U("1752852381113-7d93abc9d7ea"),
+  "dead-rat-removal-in-kansas-city": U("1765959617888-30837a158667"),
+  "commercial-rat-control-in-kansas-city": U("1589109807644-924edf14ee09"),
+  "mouse-control-in-kansas-city": U("1718220186749-bc831bba08f8"),
+};
+
 // Full URL list for sitemap (trailing slashes preserved).
 export const allPaths = [
   "/",

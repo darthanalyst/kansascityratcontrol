@@ -1,4 +1,4 @@
-import { site, hours, areaCities } from "../data/site.js";
+import { site, hours, areaCities, IMG } from "../data/site.js";
 
 const ORG_ID = `${site.url}/#org`;
 const SITE_ID = `${site.url}/#website`;
@@ -39,7 +39,7 @@ export function orgNode() {
     description: site.description,
     url: site.url + "/",
     logo: site.url + "/favicon.svg",
-    image: [site.url + "/images/hero.jpg", site.url + "/images/rat-control.jpg"],
+    image: [IMG.hero, IMG["rat-control-in-kansas-city"]],
     telephone: site.phoneE164,
     priceRange: "$$",
     areaServed: areaServed(),

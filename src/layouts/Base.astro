@@ -1,5 +1,5 @@
 ---
-import { site, serviceNav, areaNav } from "../data/site.js";
+import { site, serviceNav, areaNav, IMG } from "../data/site.js";
 import { orgNode, websiteNode } from "../lib/schema.js";
 const { title, description, path = "/", canonical } = Astro.props;
 const canon = canonical || site.url + path;
@@ -20,7 +20,7 @@ const year = new Date().getFullYear();
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canon} />
 <meta property="og:site_name" content={site.brand} />
-<meta property="og:image" content={site.url + "/images/hero.jpg"} />
+<meta property="og:image" content={IMG.hero} />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
