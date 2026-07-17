@@ -343,9 +343,9 @@ section.band .faq details>p{color:#cfe0f2}
   .subnav.open .wrap{flex-direction:column;align-items:stretch;padding:8px 14px}
   .nav-links{flex-direction:column;align-items:stretch;width:100%}
   .nav-links>a,.sub-toggle{padding:12px 10px}
-  .submenu{position:static;display:block;box-shadow:none;border:0;padding:0 0 6px 12px;min-width:0}
-  .submenu a{color:#eaf3fc}
-  .submenu a:hover{background:rgba(255,255,255,.12)}
+  .submenu{position:static;display:block;box-shadow:none;border:0;padding:2px 0 8px 12px;min-width:0;background:transparent}
+  .submenu a{color:#eaf3fc;padding:9px 12px;border-left:2px solid rgba(255,255,255,.28);border-radius:0}
+  .submenu a:hover{background:rgba(255,255,255,.14)}
   .has-sub .submenu{display:block}
   .svc-grid,.svc-ico-grid,.value-grid,.steps,.chip-grid,.area-links{grid-template-columns:1fr 1fr}
   .topbar .tb-right span.serve{display:none}
