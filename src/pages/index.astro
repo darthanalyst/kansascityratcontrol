@@ -1,0 +1,339 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav, areaNav, counties } from "../data/site.js";
+import { itemListNode, faqNode, breadcrumb } from "../lib/schema.js";
+
+const problems = [
+  { label: "Rats in the attic", glyph: "i-home", slug: "attic-rat-cleanup-in-kansas-city" },
+  { label: "Scratching in walls", glyph: "i-rat", slug: "rat-control-in-kansas-city" },
+  { label: "Burrows in the yard", glyph: "i-seal", slug: "rat-removal-in-kansas-city" },
+  { label: "Droppings in kitchen", glyph: "i-target", slug: "rat-exterminator-in-kansas-city" },
+  { label: "Rats in the garage", glyph: "i-trap", slug: "rat-removal-in-kansas-city" },
+  { label: "Chewed wires", glyph: "i-alert", slug: "rat-exterminator-in-kansas-city" },
+  { label: "Dead rat smell", glyph: "i-alert", slug: "dead-rat-removal-in-kansas-city" },
+  { label: "Mice, not rats", glyph: "i-mouse", slug: "mouse-control-in-kansas-city" },
+  { label: "Seal them out", glyph: "i-shield", slug: "rodent-exclusion-in-kansas-city" },
+  { label: "Not sure what it is", glyph: "i-search", slug: "rat-inspection-in-kansas-city" },
+];
+
+const svcBlurb = {
+  "rat-control-in-kansas-city": "Norway rats worked from every angle: burrows, sewers, basements, and walls, found, removed, and sealed out in order.",
+  "rat-exterminator-in-kansas-city": "Trapping on the runways rats actually use, placed safely around kids and pets, then the gaps sealed with metal.",
+  "rat-removal-in-kansas-city": "Live rats out of the walls, garage, and yard, with the outdoor burrows worked so the house stops refilling.",
+  "rat-inspection-in-kansas-city": "The flashlight-first visit: what rodent, where it enters, how far it has spread. Every good rat job starts here.",
+  "rodent-exclusion-in-kansas-city": "The sealing that makes removal permanent. Galvanized mesh and sheet metal at foundations, vents, and utility gaps.",
+  "attic-rat-cleanup-in-kansas-city": "Nests, soiled insulation, and droppings cleared and disinfected, then the climb routes closed for good.",
+  "dead-rat-removal-in-kansas-city": "The source of that smell located in a wall or attic, removed, and deodorized, then the entry points sealed.",
+  "commercial-rat-control-in-kansas-city": "Documented programs for restaurants, warehouses, and multi-unit buildings that hold up to health-code pressure.",
+  "mouse-control-in-kansas-city": "House mice trapped out of kitchens and walls, and the dime-sized gaps mouse-proofed before the fall push.",
+};
+const svcAlt = {
+  "rat-control-in-kansas-city": "Norway rat beside a stone foundation gap on an older Kansas City home",
+  "rat-exterminator-in-kansas-city": "A local rat exterminator setting a snap trap along a basement wall in Kansas City",
+  "rat-removal-in-kansas-city": "Snap trap set on a rat runway near a burrow along a Kansas City garage",
+  "rat-inspection-in-kansas-city": "Flashlight inspection of a Kansas City foundation for rat entry points",
+  "rodent-exclusion-in-kansas-city": "Galvanized metal mesh sealing a foundation gap on a Kansas City home",
+  "attic-rat-cleanup-in-kansas-city": "Contaminated attic insulation and rat droppings cleared in a Kansas City home",
+  "dead-rat-removal-in-kansas-city": "A technician locating a dead rat odor inside a Kansas City wall",
+  "commercial-rat-control-in-kansas-city": "Exterior rodent monitoring station at a Kansas City commercial building",
+  "mouse-control-in-kansas-city": "Sealing a small gap house mice use to enter a Kansas City kitchen",
+};
+
+const faqs = [
+  { q: "What kind of rats are in Kansas City?", a: "Almost always Norway rats, the big brown ground-level burrowers. They travel the aging clay sewer lines under the older neighborhoods and dig burrows along foundations, then climb into walls and attics. Roof rats, the climbing kind common in warmer states, are uncommon in the KC metro." },
+  { q: "How do I get rid of rats for good?", a: "Follow the order that works: inspect, remove, then seal. Trapping alone lowers the count, but rats come back through the same gaps unless those openings get closed with metal. A local exterminator maps the entry points, traps the active rats, and seals the property so new ones cannot follow the trail." },
+  { q: "How much does rat control cost in Kansas City?", a: "It depends on how far the rats have spread and how many entry points need sealing, so a flat website price would be a guess. A local exterminator looks at the property and gives upfront pricing before any work starts. Call 816-339-8830 to set up a visit." },
+  { q: "Are the noises in my walls rats or mice?", a: "Mice sound like light, fast scratching, usually up in the walls and ceilings. Rats sound heavier, with thumps and gnawing low in the structure, and they leave larger droppings and outdoor burrows. A rat inspection confirms which one you have and sets the right plan." },
+  { q: "Why do I get mice every fall?", a: "House mice push indoors from October through March when overnight lows drop below 50 degrees, looking for warmth and food. Older KC homes with stone foundations and balloon-frame walls make the move easy, so the same house sees mice each fall until the dime-sized gaps get sealed." },
+  { q: "Do you cover both the Missouri and Kansas sides?", a: "Yes. Coverage runs across the whole metro: Jackson, Clay, and Platte counties in Missouri, plus Johnson and Wyandotte counties in Kansas. Call 816-339-8830 and a local exterminator can confirm your neighborhood in a minute." },
+];
+
+const nodes = [
+  itemListNode(serviceNav),
+  faqNode(faqs),
+  breadcrumb([{ name: "Home", path: "/" }]),
+];
+---
+<Base
+  title="Rat Control in Kansas City, MO | Rats & Mice"
+  description="Rat control in Kansas City, MO. Norway rats and mice handled with inspection, trapping, and metal sealing. Answered day or night. Call 816-339-8830."
+  path="/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="blob b1"></span><span class="blob b2"></span>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker"><span class="dot"></span> Kansas City rat &amp; rodent specialists</span>
+        <h1>Rat Control in Kansas City, MO</h1>
+        <p class="lede">Scratching in the walls at 2 a.m.? Burrows along the foundation? Rat control in Kansas City is what this line is for. A local exterminator handles Norway rats and mice the right way: find the entry, clear the rats, seal the building with metal.</p>
+        <div class="hero-cta">
+          <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · Answered day or night</small></span></a>
+          <a class="btn-ghost" href="/how-it-works/">How it works →</a>
+        </div>
+        <div class="hero-chips">
+          <span>No obligation</span>
+          <span>Upfront estimate</span>
+          <span>Metal sealing, not foam</span>
+          <span>Rats only, done right</span>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="ring"><img src="/images/hero.jpg" alt="A Kansas City street of older brick and frame homes at dusk under a winter sky" width="560" height="560" loading="eager" fetchpriority="high" /></div>
+        <span class="tag">SERVING THE KC METRO · MO &amp; KS</span>
+        <div class="float f1"><svg><use href="#i-clock"/></svg> Answered day or night</div>
+        <div class="float f2"><svg><use href="#i-shield"/></svg> Sealed to stay out</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM PICKER -->
+  <div class="picker"><div class="wrap">
+    <div class="p-head">
+      <h2>What kind of rat problem are you having?</h2>
+      <p>Tap what you are seeing and jump straight to the fix. Not sure? Start with an inspection.</p>
+    </div>
+    <div class="chip-grid">
+      {problems.map((p) => (
+        <a class="chip" href={`/${p.slug}/`}><svg><use href={`#${p.glyph}`}/></svg>{p.label}</a>
+      ))}
+    </div>
+  </div></div>
+
+  <!-- CTA BAR -->
+  <div class="cta-bar"><div class="wrap">
+    <strong>Rats do not wait. Neither does this line.</strong>
+    <a class="num" href={site.phoneHref}>{site.phone}</a>
+    <a class="mini" href="/contact/">Or reach out here →</a>
+  </div></div>
+
+  <!-- SPLIT INTRO + CALL CARD -->
+  <section><div class="wrap split">
+    <div class="prose-lite">
+      <span class="kicker"><span class="dot"></span> Rat control done right in KC</span>
+      <h2>Norway Rats Are a Kansas City Problem</h2>
+      <p>Kansas City has landed on Orkin's rattiest cities list, and the reason is under the streets. The urban core and the older ring neighborhoods sit on decades-old clay sewer laterals, and Norway rats travel those lines the way people use roads. They surface through cracked laterals, floor drains, and broken cleanouts, dig burrows along foundations and under garages, and feed near dumpsters and trash carts. From Brookside bungalows and Waldo four-squares to the century homes of Hyde Park and the Historic Northeast, the pattern repeats block after block.</p>
+      <p>Rats are a property-wide problem, not one animal in one trap. A single burrow in one backyard usually means rats are working several yards at once, and store-bought bait left in a corner will not touch a colony feeding on a whole block. Real rat control follows a set order: inspect, remove, then seal. Skip the sealing and the rats are back within weeks, following the same greasy trail through the same open gap.</p>
+      <p>That last step is where most jobs fall apart. Rats chew through spray foam and steel wool in a single night, so a foam patch just marks the spot for the next rat. A local exterminator seals with galvanized mesh, hardware cloth, and sheet metal, materials rat teeth cannot beat, so the removal actually holds through a Kansas City winter. Start with a <a href="/rat-inspection-in-kansas-city/">rat inspection</a>, then move to <a href="/rat-removal-in-kansas-city/">removal</a> and <a href="/rodent-exclusion-in-kansas-city/">exclusion</a> in order.</p>
+    </div>
+    <div class="callcard">
+      <h3>Get rats handled today</h3>
+      <p>One call reaches a local rat exterminator who works Kansas City rodents only. Describe what you are seeing or hearing and get an honest read.</p>
+      <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Answered day or night</small></span></a>
+      <ul>
+        <li><svg><use href="#i-check"/></svg> Upfront estimate before any work, no obligation</li>
+        <li><svg><use href="#i-check"/></svg> Norway rats, mice, attic cleanup, and dead rat removal</li>
+        <li><svg><use href="#i-check"/></svg> Metal sealing that survives freeze-thaw winters</li>
+        <li><svg><use href="#i-check"/></svg> Serving the whole metro, Missouri and Kansas</li>
+      </ul>
+    </div>
+  </div></section>
+
+  <!-- FEATURE ROW -->
+  <section class="wash"><div class="wrap">
+    <div class="feat-grid">
+      <div class="feat"><span class="ic"><svg><use href="#i-clock"/></svg></span><div><h3>Call day or night</h3><p>Rats work after dark and so does the phone. Reach a local rat exterminator when you hear it, not next business day.</p></div></div>
+      <div class="feat"><span class="ic"><svg><use href="#i-search"/></svg></span><div><h3>Inspect before you treat</h3><p>Every job starts with confirming the species and mapping the entry points, so the plan fits the problem instead of guessing.</p></div></div>
+      <div class="feat"><span class="ic"><svg><use href="#i-shield"/></svg></span><div><h3>Metal, not foam</h3><p>Sealing done with galvanized mesh and sheet metal, the part most DIY attempts skip and the reason rats come back.</p></div></div>
+      <div class="feat"><span class="ic"><svg><use href="#i-rat"/></svg></span><div><h3>Rats only, done right</h3><p>No spray-everything pest route and no upsell into services you did not call about. One problem, worked until it is done.</p></div></div>
+    </div>
+  </div></section>
+
+  <!-- SPECIES BAND -->
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <span class="kicker"><span class="dot"></span> Know your rodent</span>
+      <h2>The Two Rodents That Matter in KC</h2>
+      <p>No roof rats here. Kansas City's pressure comes from the ground and from the fall cold, and the fix is different for each animal.</p>
+    </div>
+    <div class="species">
+      <div class="spec-card">
+        <span class="glyph"><svg><use href="#i-rat"/></svg></span>
+        <h3>The Norway Rat</h3>
+        <span class="latin">RATTUS NORVEGICUS · GROUND LEVEL</span>
+        <p>A heavy burrower that works the metro from below: burrows along foundations and under garages, travel through aging clay sewer laterals, and entries through gaps in stone and block foundations. Strongest in the older, denser neighborhoods and along commercial strips.</p>
+        <ul>
+          <li>Burrow holes with fresh dirt at the foundation, stoop, or shed</li>
+          <li>Dark, tapered droppings the size of a large grain of rice</li>
+          <li>Thumping or gnawing low in the house at night</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <span class="glyph"><svg><use href="#i-mouse"/></svg></span>
+        <h3>The House Mouse</h3>
+        <span class="latin">MUS MUSCULUS · EVERYWHERE ELSE</span>
+        <p>Kansas City's most common rodent call. Mice need a gap the size of a dime, and older homes and new subdivisions both offer plenty. They push indoors with the first hard cold in October and winter inside wall voids, kitchens, and basements.</p>
+        <ul>
+          <li>Rice-sized droppings in drawers, under sinks, along baseboards</li>
+          <li>Light, fast scratching in walls and ceilings at night</li>
+          <li>Chewed packaging in the pantry, nesting in stored fabric</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- SERVICES GRID -->
+  <section><div class="wrap">
+    <div class="sec-head">
+      <span class="kicker"><span class="dot"></span> Rat &amp; rodent services</span>
+      <h2>Rat Control Services in Kansas City</h2>
+      <p>One problem, handled end to end. Every job runs inspection first, removal second, sealing third, because that order is what makes it permanent.</p>
+    </div>
+    <div class="svc-grid">
+      {serviceNav.map((s) => (
+        <article class="svc">
+          <img src={s.img} alt={svcAlt[s.slug]} width="380" height="214" loading="lazy" />
+          <div class="svc-body">
+            <h3><a href={`/${s.slug}/`}>{s.label}</a></h3>
+            <p>{svcBlurb[s.slug]}</p>
+            <span class="go">See the service →</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- STEPS -->
+  <section class="wash"><div class="wrap">
+    <div class="sec-head">
+      <span class="kicker"><span class="dot"></span> The process</span>
+      <h2>How a Rat Job Runs</h2>
+      <p>The order is the method. Skip a step and the problem comes back with the next cold front.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">STEP 01</span><h3>Describe It</h3><p>Call and say what you are seeing and hearing. You get an honest read and an upfront estimate before anything is scheduled.</p></div>
+      <div class="step"><span class="num">STEP 02</span><h3>Inspect</h3><p>A local exterminator confirms the species and maps every entry point, from the foundation line to the roofline.</p></div>
+      <div class="step"><span class="num">STEP 03</span><h3>Remove</h3><p>Traps and secured stations placed on the runways rats actually use, chosen and positioned around kids and pets.</p></div>
+      <div class="step"><span class="num">STEP 04</span><h3>Seal</h3><p>Entry points closed with metal that survives rat teeth and freeze-thaw winters. This is the step that lasts.</p></div>
+      <div class="step"><span class="num">STEP 05</span><h3>Confirm</h3><p>A follow-up reads the evidence: activity gone, seals holding, and guidance for keeping it that way.</p></div>
+    </div>
+    <div class="hero-cta" style="justify-content:center;margin-top:30px"><a class="btn-ghost" href="/how-it-works/">The full process, explained →</a></div>
+  </div></section>
+
+  <!-- VALUE BAND (no money promises) -->
+  <section><div class="wrap">
+    <div class="sec-head">
+      <span class="kicker"><span class="dot"></span> What you get on the call</span>
+      <h2>Straightforward From the First Ring</h2>
+      <p>No pressure and no games. Here is what a call to a local Kansas City rat exterminator actually gets you.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card"><div class="vk">No obligation</div><h3>Describe the Problem Free</h3><p>Tell the exterminator what you are seeing or hearing and get an honest read on what the fix takes. You decide where it goes from there.</p></div>
+      <div class="value-card"><div class="vk">Upfront pricing</div><h3>An Estimate, Not a Guess</h3><p>The number comes after the property is seen, so it fits your house instead of a one-size website price. No surprises added later.</p></div>
+      <div class="value-card"><div class="vk">Built to last</div><h3>Sealed With Metal</h3><p>Removal paired with exclusion, sealed in galvanized mesh and sheet metal so the rats do not simply return next winter.</p></div>
+    </div>
+  </div></section>
+
+  <!-- NEIGHBOR / WHY BAND -->
+  <section class="band"><div class="wrap neighbor">
+    <div>
+      <span class="kicker"><span class="dot"></span> Built for Kansas City housing</span>
+      <h2>A Local Read on Every Block</h2>
+      <p>Kansas City rat pressure changes with the housing. Century homes in Midtown and the Northeast hide entry points in deteriorating stone foundations and balloon-frame walls that run open from basement to attic. Postwar ranches in Raytown and Gladstone leak through worn garage seals and settled sills. New subdivisions in Olathe and Lee's Summit still have construction gaps at utility lines and weep holes. And every freeze-thaw winter opens fresh cracks a rat can use.</p>
+      <ul class="trust-points">
+        <li><svg><use href="#i-check"/></svg> A local exterminator who reads the difference between a Norway rat run and a fall mouse push</li>
+        <li><svg><use href="#i-check"/></svg> Entry points sealed with metal, aimed at the openings that actually matter on your home</li>
+        <li><svg><use href="#i-check"/></svg> Work credited to the local pro who does it, with an upfront estimate before any of it starts</li>
+      </ul>
+      <div class="hero-cta" style="margin-top:22px"><a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Answered day or night</small></span></a></div>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <svg class="badge-seal" viewBox="0 0 160 160" role="img" aria-label="Kansas City rat control service seal" style="width:220px;height:220px">
+        <circle cx="80" cy="80" r="76" fill="#0e335c" stroke="#f6b41c" stroke-width="3"/>
+        <circle cx="80" cy="80" r="60" fill="none" stroke="#1b4c7f" stroke-width="1.5"/>
+        <path d="M40 96 L80 66 L120 96" fill="none" stroke="#f6b41c" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M50 92v26h60V92" fill="none" stroke="#e8f1fb" stroke-width="3"/>
+        <g fill="#e8f1fb"><circle cx="72" cy="104" r="8"/><circle cx="66" cy="98" r="3.2"/><circle cx="78" cy="98" r="3.2"/></g>
+        <path d="M82 104c8 0 11 2 15 6.5" fill="none" stroke="#e8f1fb" stroke-width="3" stroke-linecap="round"/>
+        <text x="80" y="34" text-anchor="middle" fill="#f6b41c" font-family="Roboto Slab, serif" font-weight="800" font-size="12" letter-spacing="1">KANSAS CITY</text>
+        <text x="80" y="140" text-anchor="middle" fill="#e8f1fb" font-family="Roboto Slab, serif" font-weight="700" font-size="10" letter-spacing="2">RATS ONLY</text>
+      </svg>
+    </div>
+  </div></section>
+
+  <!-- SERVICE AREA -->
+  <section><div class="wrap">
+    <div class="sec-head">
+      <span class="kicker"><span class="dot"></span> Where we work</span>
+      <h2>Serving the Kansas City Metro</h2>
+      <p>Rat pressure does not stop at the state line, and neither does the coverage. Missouri and Kansas, urban core to the county edges.</p>
+    </div>
+    <div class="split" style="align-items:start">
+      <div class="counties">
+        {counties.map((c, i) => (
+          <details class="county" open={i === 0}>
+            <summary>{c.name}<span class="pm">+</span></summary>
+            <div class="county-body">
+              {c.places.map((p) => <span><svg width="14" height="14" style="color:#1665ad"><use href="#i-pin"/></svg> {p}</span>)}
+            </div>
+          </details>
+        ))}
+      </div>
+      <div class="metro-map">
+        <svg viewBox="0 0 420 360" role="img" aria-label="Stylized map of the Kansas City metro across the Missouri and Kansas state line">
+          <rect width="420" height="360" fill="#0e335c"/>
+          <g opacity="0.35" stroke="#1b4c7f" stroke-width="1"><path d="M0 90h420M0 180h420M0 270h420M105 0v360M210 0v360M315 0v360"/></g>
+          <!-- rivers -->
+          <path d="M0 150 C90 130 150 170 210 150 C270 132 340 160 420 140" fill="none" stroke="#2f6fa8" stroke-width="6" opacity="0.8"/>
+          <path d="M210 150 C205 210 235 260 250 360" fill="none" stroke="#2f6fa8" stroke-width="5" opacity="0.7"/>
+          <!-- state line -->
+          <path d="M150 0 V360" stroke="#f6b41c" stroke-width="2.4" stroke-dasharray="7 6"/>
+          <text x="120" y="20" fill="#9dc0e4" font-family="monospace" font-size="10">KS</text>
+          <text x="160" y="20" fill="#9dc0e4" font-family="monospace" font-size="10">MO</text>
+          <!-- county blobs -->
+          <g fill="#12406f" stroke="#1f5c95" stroke-width="1.5">
+            <rect x="165" y="120" width="95" height="80" rx="8"/>
+            <rect x="180" y="55" width="90" height="60" rx="8"/>
+            <rect x="60" y="200" width="90" height="90" rx="8"/>
+          </g>
+          <!-- pins -->
+          <g font-family="Libre Franklin, sans-serif" font-size="10" font-weight="700">
+            <g fill="#f6b41c"><circle cx="205" cy="160" r="6"/></g><text x="215" y="164" fill="#e8f1fb">Kansas City</text>
+            <g fill="#f6b41c"><circle cx="250" cy="175" r="4.5"/></g><text x="258" y="178" fill="#c3d6ea">Independence</text>
+            <g fill="#f6b41c"><circle cx="255" cy="215" r="4.5"/></g><text x="263" y="218" fill="#c3d6ea">Lee's Summit</text>
+            <g fill="#f6b41c"><circle cx="205" cy="90" r="4.5"/></g><text x="213" y="93" fill="#c3d6ea">Gladstone</text>
+            <g fill="#f6b41c"><circle cx="240" cy="80" r="4.5"/></g><text x="248" y="83" fill="#c3d6ea">Liberty</text>
+            <g fill="#f6b41c"><circle cx="105" cy="245" r="4.5"/></g><text x="60" y="235" fill="#c3d6ea">Overland Park</text>
+            <g fill="#f6b41c"><circle cx="80" cy="270" r="4.5"/></g><text x="40" y="290" fill="#c3d6ea">Olathe</text>
+            <g fill="#f6b41c"><circle cx="150" cy="150" r="5"/></g><text x="100" y="140" fill="#c3d6ea">KCK</text>
+          </g>
+          <text x="20" y="345" fill="#7fa6cf" font-family="monospace" font-size="9" letter-spacing="1">KANSAS CITY METRO · MO &amp; KS</text>
+        </svg>
+      </div>
+    </div>
+    <div class="sec-head left" style="margin-top:44px;max-width:none">
+      <h3 style="font-size:1.2rem">Popular Areas We Cover</h3>
+    </div>
+    <div class="area-links">
+      {areaNav.map((a) => <a href={`/${a.slug}/`}><svg><use href="#i-pin"/></svg> {a.label}</a>)}
+    </div>
+    <p style="margin-top:24px;color:var(--muted)">Close to one of these? Coverage extends to the neighboring suburbs too: Grandview, Belton, Parkville, Riverside, Leawood, Prairie Village, and Bonner Springs among them. Call {site.phone} and ask. The answer is usually yes, and you will know in a minute. See the <a href="/service-areas/">full service area</a>.</p>
+  </div></section>
+
+  <!-- FAQ -->
+  <section class="wash"><div class="wrap">
+    <div class="sec-head">
+      <span class="kicker"><span class="dot"></span> Rat control questions</span>
+      <h2>Kansas City Rat Control FAQ</h2>
+    </div>
+    <div class="faq">
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+    <p style="text-align:center;margin-top:26px;color:var(--muted)">More reading: the CDC on <a href="https://www.cdc.gov/rodents/" rel="noopener">rodents and health</a>, and MU Extension's guide to <a href="https://extension.missouri.edu/publications/g9446" rel="noopener">controlling rats</a>.</p>
+  </div></section>
+
+  <!-- CALL BAND -->
+  <section class="call-band"><div class="wrap">
+    <span class="kicker"><span class="dot"></span> Answered day or night</span>
+    <h2>Stop Listening to the Walls</h2>
+    <p>Describe what is happening in your home and get an honest plan with an upfront estimate. No pressure, no obligation, and no waiting for business hours, because the rats do not.</p>
+    <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · Kansas City, MO &amp; KS</small></span></a>
+  </div></section>
+</Base>
