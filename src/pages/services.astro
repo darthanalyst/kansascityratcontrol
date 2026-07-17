@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav } from "../data/site.js";
+import { breadcrumb, itemListNode } from "../lib/schema.js";
+const nodes = [
+  breadcrumb([{ name: "Home", path: "/" }, { name: "Rat Services", path: "/services/" }]),
+  itemListNode(serviceNav),
+];
+const blurbs = {
+  "rat-control-in-kansas-city": "Norway rats worked from every angle: burrows, sewers, basements, and walls, found, removed, and sealed out in order.",
+  "rat-exterminator-in-kansas-city": "Trapping on the runways rats actually use, placed safely around kids and pets, then the gaps sealed with metal.",
+  "rat-removal-in-kansas-city": "Live rats out of the walls, garage, and yard, with the outdoor burrows worked so the house stops refilling.",
+  "rat-inspection-in-kansas-city": "The flashlight-first visit: what rodent, where it enters, how bad, and what the fix costs. Answers before work.",
+  "rodent-exclusion-in-kansas-city": "The sealing that makes removal permanent. Galvanized mesh and sheet metal at foundations, vents, and utility gaps.",
+  "attic-rat-cleanup-in-kansas-city": "Nests, soiled insulation, and droppings cleared and disinfected, then the climb routes closed for good.",
+  "dead-rat-removal-in-kansas-city": "The source of that smell located in a wall or attic, removed, and deodorized, then the entry points sealed.",
+  "commercial-rat-control-in-kansas-city": "Documented programs for restaurants, warehouses, and multi-unit buildings that hold up to health-code pressure.",
+  "mouse-control-in-kansas-city": "House mice trapped out of kitchens and walls, and the dime-sized gaps mouse-proofed before the fall push.",
+};
+---
+<Base
+  title="Rat Control Services in Kansas City | Rats & Mice"
+  description="Rat control services in Kansas City, MO: rat exterminator, removal, inspection, exclusion, attic cleanup, dead rat removal, commercial, and mice. 816-339-8830."
+  path="/services/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / Rat Services</p>
+    <span class="kicker"><span class="dot"></span> Rats only, done right</span>
+    <h1>Rat Control Services in Kansas City</h1>
+    <p class="lede">Rat control services in Kansas City cover one problem from every angle: Norway rats and mice, found, removed, and sealed out with metal. No spray-everything pest route, no upsell into services you did not call about. A local exterminator works the rodent problem until it is done.</p>
+    <div class="hero-cta">
+      <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · Day or night</small></span></a>
+    </div>
+  </div></div>
+  <section><div class="wrap">
+    <div class="svc-ico-grid">
+      {serviceNav.map((s) => (
+        <article class="svc-ico">
+          <div class="ic"><svg><use href={`#${s.glyph}`}/></svg></div>
+          <h3><a href={`/${s.slug}/`}>{s.label}</a></h3>
+          <p>{blurbs[s.slug]}</p>
+          <p style="margin-top:8px"><a href={`/${s.slug}/`} style="font-weight:800">See the service →</a></p>
+        </article>
+      ))}
+    </div>
+    <div class="sec-head" style="margin-top:64px">
+      <h2>One Problem, One Sequence</h2>
+      <p>Every service here is a piece of the same sequence: inspect, remove, seal, confirm. A mouse call in a Gladstone ranch might use three of the pieces. A rat problem in a Strawberry Hill double might use all of them plus a camera on the sewer lateral. The point of a rat-only focus is that the plan fits the problem, and you hear the plan and the estimate before any work starts. Read <a href="/how-it-works/">how it works</a>, or call {site.phone} and describe what is happening. The line is answered day or night.</p>
+    </div>
+  </div></section>
+  <section class="call-band"><div class="wrap">
+    <span class="kicker"><span class="dot"></span> Answered day or night</span>
+    <h2>Not Sure Which Service You Need?</h2>
+    <p>Describe what you are seeing or hearing and a local exterminator will tell you what you have and what the fix takes. Start with an inspection if you are unsure.</p>
+    <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · KC metro</small></span></a>
+  </div></section>
+</Base>

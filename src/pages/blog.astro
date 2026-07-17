@@ -1,0 +1,47 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const nodes = [breadcrumb([{ name: "Home", path: "/" }, { name: "Rat Guides", path: "/blog/" }])];
+const guides = [
+  { slug: "how-to-get-rid-of-rats-kansas-city", title: "How to Get Rid of Rats in Kansas City", excerpt: "The order that actually works, the DIY steps worth doing, and the parts a local exterminator handles better.", tag: "Guide" },
+  { slug: "rat-exterminator-cost-kansas-city", title: "What Does a Rat Exterminator Cost in Kansas City?", excerpt: "What moves the price of a rat job, why a flat website number is a guess, and how upfront estimates work.", tag: "Cost" },
+  { slug: "signs-of-rats-in-your-house", title: "Signs of Rats in Your House: Rats vs. Mice", excerpt: "Droppings, rub marks, burrows, and sounds, and how to tell a Norway rat problem from house mice.", tag: "Identify" },
+];
+---
+<Base
+  title="Kansas City Rat Guides | Rats, Mice & Prevention"
+  description="Guides on rats and mice in Kansas City: how to get rid of rats, what a rat exterminator costs, and the signs of rats vs. mice. Call 816-339-8830."
+  path="/blog/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / Rat Guides</p>
+    <span class="kicker"><span class="dot"></span> Straight answers on rats</span>
+    <h1>Kansas City Rat Guides</h1>
+    <p class="lede">Plain, useful reading on Norway rats and house mice in Kansas City: how to get rid of them, what it costs, and how to read the signs. When you want help, a local exterminator is one call away.</p>
+    <div class="hero-cta">
+      <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · Day or night</small></span></a>
+    </div>
+  </div></div>
+  <section><div class="wrap">
+    <div class="svc-grid">
+      {guides.map((g) => (
+        <article class="svc">
+          <div class="svc-body">
+            <span class="kicker"><span class="dot"></span> {g.tag}</span>
+            <h3><a href={`/blog/${g.slug}/`}>{g.title}</a></h3>
+            <p>{g.excerpt}</p>
+            <span class="go">Read the guide →</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div></section>
+  <section class="call-band"><div class="wrap">
+    <span class="kicker"><span class="dot"></span> Answered day or night</span>
+    <h2>Rather Just Talk to Someone?</h2>
+    <p>Describe what you are seeing and a local exterminator will tell you what you have and what the fix takes. No obligation.</p>
+    <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · KC metro</small></span></a>
+  </div></section>
+</Base>

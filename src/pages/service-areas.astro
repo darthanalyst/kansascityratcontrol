@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, areaNav, counties } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const nodes = [breadcrumb([{ name: "Home", path: "/" }, { name: "Service Areas", path: "/service-areas/" }])];
+---
+<Base
+  title="Rat Control Service Areas | Kansas City Metro"
+  description="Rat control across the Kansas City metro: KC, Independence, Lee's Summit, Overland Park, Olathe, Lenexa, Shawnee, and more, MO & KS. Call 816-339-8830."
+  path="/service-areas/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / Service Areas</p>
+    <span class="kicker"><span class="dot"></span> Both sides of the state line</span>
+    <h1>Rat Control Across the Kansas City Metro</h1>
+    <p class="lede">Rat control for Kansas City and the suburbs around it, Missouri and Kansas. The pressure changes with the housing: century homes in the Northeast, postwar ranches in the Northland, river-bottom blocks in KCK, and new subdivisions in Johnson County. A local exterminator reads each one on its own terms.</p>
+    <div class="hero-cta">
+      <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · Day or night</small></span></a>
+    </div>
+  </div></div>
+  <section><div class="wrap">
+    <div class="sec-head">
+      <span class="kicker"><span class="dot"></span> Counties we cover</span>
+      <h2>Kansas City Metro Coverage</h2>
+      <p>Five counties across two states. Open a county to see the cities and towns inside it.</p>
+    </div>
+    <div class="counties">
+      {counties.map((c, i) => (
+        <details class="county" open={i === 0}>
+          <summary>{c.name}<span class="pm">+</span></summary>
+          <div class="county-body">
+            {c.places.map((p) => <span><svg width="14" height="14" style="color:#1665ad"><use href="#i-pin"/></svg> {p}</span>)}
+          </div>
+        </details>
+      ))}
+    </div>
+    <div class="sec-head" style="margin-top:56px">
+      <h2>Area Pages</h2>
+      <p>Each area page covers the local housing, the rat pattern it produces, and the questions that come up there.</p>
+    </div>
+    <div class="area-links">
+      {areaNav.map((a) => <a href={`/${a.slug}/`}><svg><use href="#i-pin"/></svg> {a.label}</a>)}
+    </div>
+    <div class="sec-head" style="margin-top:56px">
+      <h2>Close to One of These?</h2>
+      <p>Coverage extends to the neighboring suburbs too: Grandview, Belton, Raymore, Parkville, Riverside, Smithville, Kearney, Leawood, Prairie Village, and Bonner Springs among them. If you are near anything on this page, call {site.phone} and ask. The answer is usually yes, and you will know in one minute. The line is answered day or night.</p>
+    </div>
+  </div></section>
+  <section class="call-band"><div class="wrap">
+    <span class="kicker"><span class="dot"></span> Answered day or night</span>
+    <h2>Rats in Your Neighborhood?</h2>
+    <p>Reach a local rat exterminator who knows Kansas City housing on both sides of the line. Honest plan, upfront estimate, no obligation.</p>
+    <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · KC metro</small></span></a>
+  </div></section>
+</Base>

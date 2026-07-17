@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const nodes = [breadcrumb([{ name: "Home", path: "/" }, { name: "Terms of Use", path: "/terms/" }])];
+---
+<Base
+  title="Terms of Use | Kansas City Rat Control"
+  description="Terms of use for the Kansas City Rat Control website."
+  path="/terms/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / Terms of Use</p>
+    <h1>Terms of Use</h1>
+    <p class="lede">The terms that govern your use of the Kansas City Rat Control website.</p>
+  </div></div>
+  <div class="article"><div class="wrap"><div class="prose" style="max-width:800px;margin:0 auto">
+    <p>By accessing or using this website, you agree to these Terms of Use. If you do not agree, please do not use the site.</p>
+    <h2>Use of the Site</h2>
+    <p>The information on this site is provided for general informational purposes about rat and rodent control. You agree to use the site lawfully and not to interfere with its operation or misuse any contact channels provided.</p>
+    <h2>No Guarantee of Results</h2>
+    <p>Content on this site describes rodent problems and control methods in general terms. It does not guarantee any particular outcome for your property. Actual work is performed by independent local service providers, and results depend on the specific property and conditions.</p>
+    <h2>Independent Providers</h2>
+    <p>This site helps homeowners reach independent local service providers. We do not perform the work ourselves and are not responsible for the acts, omissions, pricing, or workmanship of any independent provider. It is your responsibility to verify that any provider you hire carries the license and insurance required for the work.</p>
+    <h2>Intellectual Property</h2>
+    <p>The text, layout, and graphics on this site are owned by or licensed to the site and may not be copied or reused without permission.</p>
+    <h2>Limitation of Liability</h2>
+    <p>The site is provided "as is" without warranties of any kind. To the fullest extent allowed by law, we are not liable for any damages arising from your use of the site or from services provided by independent providers.</p>
+    <h2>Changes</h2>
+    <p>We may update these terms at any time. Continued use of the site after changes are posted means you accept the updated terms.</p>
+    <h2>Contact</h2>
+    <p>Questions about these terms can be directed to us by phone at {site.phone}.</p>
+  </div></div></div>
+</Base>

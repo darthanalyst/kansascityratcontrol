@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const nodes = [breadcrumb([{ name: "Home", path: "/" }, { name: "How It Works", path: "/how-it-works/" }])];
+---
+<Base
+  title="How Rat Control Works in Kansas City | The Process"
+  description="How rat control works in Kansas City: inspect, remove, seal with metal, confirm. See the sequence a local exterminator follows. Call 816-339-8830."
+  path="/how-it-works/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / How It Works</p>
+    <span class="kicker"><span class="dot"></span> The order is the method</span>
+    <h1>How Rat Control Works in Kansas City</h1>
+    <p class="lede">Getting rats out and keeping them out is a sequence, not a single trap. Here is the order a local exterminator follows in a Kansas City home, and why skipping a step is what brings the rats back.</p>
+    <div class="hero-cta">
+      <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · Day or night</small></span></a>
+    </div>
+  </div></div>
+  <div class="article"><div class="wrap article-grid">
+    <div class="prose">
+      <p>Most rat problems that drag on for months share one cause: someone treated the symptom and skipped the sequence. A trap catches a rat, then two more show up next week, because nothing closed the gap they used to get in. Real rat control in Kansas City runs in a set order, and each step feeds the next.</p>
+      <h2>Step 1: Describe It</h2>
+      <p>It starts with a call. Tell the exterminator what you are seeing and hearing: scratching in the walls at night, droppings in the garage, a burrow along the foundation, a smell in one room. That description already narrows the animal and the severity, and you get an honest read plus an upfront estimate before anything is scheduled. The line is answered day or night, so you do not have to wait for business hours to get help.</p>
+      <h2>Step 2: Inspect</h2>
+      <p>A local technician walks the property with a flashlight to confirm the species and map every entry point. Norway rats leave large tapered droppings, dig burrows in the yard, and gnaw low openings. House mice leave tiny droppings and need only a dime-sized gap. The inspection checks the foundation line, sill, crawlspace vents, pipe and cable penetrations, garage thresholds, and roofline. In Kansas City's older balloon-frame homes, a single sill gap can feed the whole wall from basement to attic, so nothing is too small to note. This map is what the sealing later depends on. Read more about the <a href="/rat-inspection-in-kansas-city/">rat inspection</a>.</p>
+      <h2>Step 3: Remove</h2>
+      <p>With the species and entry points known, the exterminator sets traps on the runways rats actually use: behind appliances, along joists, at burrow mouths, and inside wall voids. Snap trapping works fast, gives a clear count of what is being removed, and never leaves a rat to die inside a wall the way poison can. Placement is planned around kids and pets, with tamper-resistant stations used carefully outdoors where needed. See how <a href="/rat-removal-in-kansas-city/">rat removal</a> and the <a href="/rat-exterminator-in-kansas-city/">rat exterminator</a> work handles this step.</p>
+      <h2>Step 4: Seal</h2>
+      <p>This is the step that makes the difference. Once the active rats are out, the entry points get closed with metal, galvanized mesh, hardware cloth, sheet metal, and mortar, so new rats cannot follow the same trail back in. Foam and steel wool get chewed through in a night, which is why they fail. Kansas City's freeze-thaw winters keep opening fresh gaps in stone and aging block, so the sealing has to be built to hold through that movement. This is <a href="/rodent-exclusion-in-kansas-city/">rodent exclusion</a>, and it is what turns a one-time removal into a lasting fix.</p>
+      <h2>Step 5: Confirm</h2>
+      <p>A follow-up visit reads the evidence: traps checked, activity gone, seals holding. If a property has heavy pressure from a neighboring lot or an alley, a return visit or two confirms the population is really down to zero. You also get guidance on the yard conditions that feed rats, like woodpiles against the house, open trash, and bird seed, so the fix stays a fix.</p>
+      <h2>Why the Order Matters</h2>
+      <p>Every step depends on the one before it. Skip the inspection and you use the wrong traps and seal the wrong gaps. Skip the removal and you seal rats inside. Skip the sealing and the rats come back with the next cold front. Done in order, the sequence ends the problem instead of managing it. That is the whole point of calling a local exterminator who works rats and rodents only: the plan fits the problem, and you hear it before any work starts.</p>
+    </div>
+    <aside class="side">
+      <div class="side-card dark">
+        <h3>Start With a Call</h3>
+        <p>Describe what you are seeing or hearing and get an honest read with an upfront estimate. No obligation.</p>
+        <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Answered day or night</small></span></a>
+      </div>
+      <div class="side-card">
+        <h3>The Sequence</h3>
+        <ul>
+          <li>1. Describe it</li>
+          <li>2. Inspect</li>
+          <li>3. Remove</li>
+          <li>4. Seal with metal</li>
+          <li>5. Confirm</li>
+        </ul>
+      </div>
+    </aside>
+  </div></div>
+  <section class="call-band"><div class="wrap">
+    <span class="kicker"><span class="dot"></span> Answered day or night</span>
+    <h2>Ready to Start the Sequence?</h2>
+    <p>One call reaches a local rat exterminator. Describe the problem, get an honest plan and an upfront estimate.</p>
+    <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · KC metro</small></span></a>
+  </div></section>
+</Base>

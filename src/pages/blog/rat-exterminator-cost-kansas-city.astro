@@ -1,0 +1,67 @@
+---
+import Base from "../../layouts/Base.astro";
+import { site } from "../../data/site.js";
+import { breadcrumb, articleNode, faqNode } from "../../lib/schema.js";
+const path = "/blog/rat-exterminator-cost-kansas-city/";
+const faqs = [
+  { q: "Why won't a website give me a flat rat control price?", a: "Because an honest number depends on the animal, the level of activity, and how much sealing the building needs. A flat rate quoted before anyone sees the property is a guess. A local exterminator gives upfront pricing after the inspection." },
+  { q: "Is trapping or a sealing job more of the cost?", a: "On a lasting fix, the exclusion, the metal sealing, is usually the biggest price mover, because it can range from a few closures to a whole envelope. Trapping is more predictable. The inspection sets the scope." },
+  { q: "Does one visit fix a rat problem?", a: "A small, localized problem can clear with trapping and sealing in a short window. A property-wide infestation with yard burrows usually needs follow-up visits to confirm the count is at zero." },
+];
+const nodes = [
+  breadcrumb([{ name: "Home", path: "/" }, { name: "Rat Guides", path: "/blog/" }, { name: "Rat Exterminator Cost", path }]),
+  articleNode({ headline: "What Does a Rat Exterminator Cost in Kansas City?", description: "What moves the price of a rat job in Kansas City and why upfront estimates beat a flat website number.", path }),
+  faqNode(faqs),
+];
+---
+<Base
+  title="Rat Exterminator Cost in Kansas City, MO"
+  description="What a rat exterminator costs in Kansas City and what moves the price: the animal, the activity level, and the sealing scope. Upfront estimates. 816-339-8830."
+  path={path}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / <a href="/blog/">Rat Guides</a> / Rat Exterminator Cost</p>
+    <span class="kicker"><span class="dot"></span> Cost</span>
+    <h1>What Does a Rat Exterminator Cost in Kansas City?</h1>
+    <p class="lede">Everyone wants one number. The honest answer is that a rat job is priced to the property, not to a website. Here is what actually moves the cost, and why an upfront estimate after an inspection beats a flat rate you see online.</p>
+  </div></div>
+  <div class="article"><div class="wrap article-grid">
+    <div class="prose">
+      <p>Rat control pricing is not a mystery, but it is not a fixed sticker either. No two rat jobs price the same, and anyone quoting one number for every house before seeing it is guessing. Four things move the figure, and a local exterminator gives you the number upfront after looking at the property.</p>
+      <h2>What Moves the Price</h2>
+      <ul>
+        <li><strong>The animal.</strong> Rat work and mouse work use different equipment, timelines, and follow-up. Rats run longer because of their caution and their burrows.</li>
+        <li><strong>The activity level.</strong> One runway and light droppings is a different job from an established colony in the walls of an older home. The inspection sets this honestly.</li>
+        <li><strong>The sealing scope.</strong> A newer subdivision home might need a handful of closures. A century home in the Northeast might need many. Exclusion scope is usually the biggest price mover.</li>
+        <li><strong>One-time versus monitoring.</strong> Most homes need a job with a follow-up. Heavy-pressure blocks and commercial kitchens do better with scheduled monitoring, which changes the pricing model.</li>
+      </ul>
+      <h2>Why the Inspection Comes First</h2>
+      <p>The reason a flat website price does not exist is that the sealing list, the part that makes the fix permanent, cannot be known until someone maps the entry points. A <a href="/rat-inspection-in-kansas-city/">rat inspection</a> confirms the species, the spread, and the openings that need metal. Only then can an exterminator give a number that actually fits your house. That is why the honest quote comes after the walk-around, not before.</p>
+      <h2>What You Are Paying For</h2>
+      <p>A rat job is not just traps. On a lasting fix you are paying for the inspection that finds the real entry points, the trapping that clears the active rats, and the exclusion work that seals the gaps with galvanized mesh and sheet metal so the rats do not return next winter. Cheap-looking fixes that skip the sealing tend to cost more over time, because the rats come back and you pay again. In Kansas City, where freeze-thaw winters keep opening new gaps, the sealing is what earns its place in the price.</p>
+      <h2>Getting an Honest Number</h2>
+      <p>The cleanest way to find out what your situation costs is to describe it and get an upfront estimate. Call {site.phone}, tell the exterminator what you are seeing and where, and get a number before any work is scheduled. The line is answered day or night, and there is no obligation. For the full picture, read the <a href="/rat-exterminator-in-kansas-city/">rat exterminator</a> and <a href="/rat-control-in-kansas-city/">rat control</a> pages.</p>
+      <h2>Common Questions</h2>
+      <div class="faq">
+        {faqs.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+      </div>
+    </div>
+    <aside class="side">
+      <div class="side-card dark">
+        <h3>Get an Upfront Estimate</h3>
+        <p>Describe the problem and get a number that fits your house. No obligation.</p>
+        <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Answered day or night</small></span></a>
+      </div>
+      <div class="side-card">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="/rat-exterminator-in-kansas-city/">Rat Exterminator</a></li>
+          <li><a href="/rat-control-in-kansas-city/">Rat Control</a></li>
+          <li><a href="/rodent-exclusion-in-kansas-city/">Rodent Exclusion</a></li>
+          <li><a href="/blog/how-to-get-rid-of-rats-kansas-city/">How to Get Rid of Rats</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div></div>
+</Base>

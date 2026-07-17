@@ -1,0 +1,65 @@
+---
+import Base from "../../layouts/Base.astro";
+import { site } from "../../data/site.js";
+import { breadcrumb, articleNode, faqNode } from "../../lib/schema.js";
+const path = "/blog/how-to-get-rid-of-rats-kansas-city/";
+const faqs = [
+  { q: "What is the fastest way to get rid of rats?", a: "Trapping on the runways rats actually use, paired with sealing the entry points with metal in the same job. Trapping alone lowers the count, but only the sealing keeps the house clear after that." },
+  { q: "Does poison get rid of rats?", a: "It can lower a population, but a poisoned rat often dies inside a wall and creates a smell problem, and poison never closes the gap the rats used. Trapping plus metal sealing is the more reliable route in a home." },
+  { q: "Will rats leave on their own?", a: "Not while a Kansas City home offers warmth, food, and an open gap. They breed through the year, so a small problem grows. Removing them and sealing the entry points is what ends it." },
+];
+const nodes = [
+  breadcrumb([{ name: "Home", path: "/" }, { name: "Rat Guides", path: "/blog/" }, { name: "How to Get Rid of Rats", path }]),
+  articleNode({ headline: "How to Get Rid of Rats in Kansas City", description: "The order that works for Norway rats and mice in KC homes, the DIY steps worth doing, and what a local exterminator handles better.", path }),
+  faqNode(faqs),
+];
+---
+<Base
+  title="How to Get Rid of Rats in Kansas City, MO"
+  description="How to get rid of rats in Kansas City: inspect, remove, and seal with metal. DIY steps that help and the parts a local exterminator does better. 816-339-8830."
+  path={path}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / <a href="/blog/">Rat Guides</a> / How to Get Rid of Rats</p>
+    <span class="kicker"><span class="dot"></span> Guide</span>
+    <h1>How to Get Rid of Rats in Kansas City</h1>
+    <p class="lede">Rats are stubborn, but the fix is not complicated. It is a sequence, done in order. Here is what works on Kansas City's Norway rats, what you can do yourself, and where a local exterminator earns the call.</p>
+  </div></div>
+  <div class="article"><div class="wrap article-grid">
+    <div class="prose">
+      <p>Kansas City's rat is the Norway rat, a ground-level burrower that works foundations, aging sewer lines, and the older neighborhoods hardest. Getting rid of it takes more than a trap in the garage. The proven order is the same one a local exterminator uses: inspect, remove, seal, confirm.</p>
+      <h2>Step 1: Confirm What You Have</h2>
+      <p>Before you buy a single trap, figure out the animal. Norway rats leave dark, tapered droppings the size of a large grain of rice, dig burrows with fresh dirt along the foundation, and sound heavy in the walls at night. House mice leave rice-sized droppings and sound like light, fast scratching. The trap sizes and the entry points differ, so the wrong guess wastes time. If you are unsure, a <a href="/rat-inspection-in-kansas-city/">rat inspection</a> settles it.</p>
+      <h2>Step 2: Cut Off Food and Cover</h2>
+      <p>This is the DIY part worth doing. Rats stay where food and cover meet. Secure trash carts, bring in pet food and bird seed, pick up fallen fruit, and move woodpiles and dense clutter away from the house. Trim back plantings and limbs touching the roof. None of this removes the rats, but it makes your property less worth their effort and helps everything else work.</p>
+      <h2>Step 3: Trap, Do Not Just Bait</h2>
+      <p>Snap traps set on active runways and at burrow mouths bring the count down fast and let you see results. Place them where the rub marks and droppings show traffic, along walls and behind appliances, not out in the open where rats will not go. Skip the loose poison. A poisoned rat often dies in a wall cavity, and then you are dealing with the smell and a possible call for <a href="/dead-rat-removal-in-kansas-city/">dead rat removal</a>. Keep traps out of reach of kids and pets.</p>
+      <h2>Step 4: Seal With Metal</h2>
+      <p>This is the step that decides whether the rats stay gone. Close the gaps they used with metal, galvanized mesh, hardware cloth, and sheet metal, not foam or steel wool, which rats chew through in a night. In Kansas City that means the foundation line, sill gaps, utility penetrations, garage thresholds, and any sewer-related access. Freeze-thaw winters keep opening new gaps, so sealing built to hold through that movement is what lasts. This is <a href="/rodent-exclusion-in-kansas-city/">rodent exclusion</a>, and it is the part most DIY attempts skip.</p>
+      <h2>Where a Local Exterminator Helps</h2>
+      <p>You can handle the sanitation and a few traps. Where a local exterminator earns the call is the full sequence on a real infestation: reading a burrow network working a whole block, reaching entry points on the roofline or inside walls, and sealing with metal in a way that holds. In KC's older balloon-frame homes, a rat can travel from the foundation to the attic inside one wall cavity, and finding those routes takes experience. See how the full process runs on the <a href="/how-it-works/">how it works</a> page, or read the flagship <a href="/rat-control-in-kansas-city/">rat control</a> overview.</p>
+      <p>When you want it handled, call {site.phone}. The line is answered day or night, and you get an honest read and an upfront estimate before any work. For more on rodents and health, see the <a href="https://www.cdc.gov/rodents/" rel="noopener">CDC's rodent guidance</a>.</p>
+      <h2>Common Questions</h2>
+      <div class="faq">
+        {faqs.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+      </div>
+    </div>
+    <aside class="side">
+      <div class="side-card dark">
+        <h3>Want It Handled?</h3>
+        <p>Reach a local rat exterminator. Honest plan, upfront estimate, no obligation.</p>
+        <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Answered day or night</small></span></a>
+      </div>
+      <div class="side-card">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="/rat-control-in-kansas-city/">Rat Control</a></li>
+          <li><a href="/rat-removal-in-kansas-city/">Rat Removal</a></li>
+          <li><a href="/rodent-exclusion-in-kansas-city/">Rodent Exclusion</a></li>
+          <li><a href="/blog/signs-of-rats-in-your-house/">Signs of Rats</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div></div>
+</Base>

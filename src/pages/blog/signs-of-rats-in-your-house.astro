@@ -1,0 +1,65 @@
+---
+import Base from "../../layouts/Base.astro";
+import { site } from "../../data/site.js";
+import { breadcrumb, articleNode, faqNode } from "../../lib/schema.js";
+const path = "/blog/signs-of-rats-in-your-house/";
+const faqs = [
+  { q: "How do I know if it is rats or mice?", a: "Rats leave large tapered droppings and dig burrows outside, and they sound heavy in the walls. Mice leave rice-sized droppings, need only a dime-sized gap, and sound like light, fast scratching. An inspection confirms which one you have." },
+  { q: "What are the first signs of rats?", a: "Droppings along baseboards or in the garage, greasy rub marks on walls and pipes, gnaw damage low to the ground, fresh burrow holes in the yard, and scratching or thumping in the walls at night." },
+  { q: "Are rats in the house dangerous?", a: "They can be. Rats gnaw wiring, which is a fire risk, and contaminate food and surfaces with droppings and urine that can carry disease. Getting them out early limits both the damage and the health risk." },
+];
+const nodes = [
+  breadcrumb([{ name: "Home", path: "/" }, { name: "Rat Guides", path: "/blog/" }, { name: "Signs of Rats", path }]),
+  articleNode({ headline: "Signs of Rats in Your House: Rats vs. Mice", description: "How to read droppings, rub marks, burrows, and sounds, and tell a Norway rat problem from house mice in a Kansas City home.", path }),
+  faqNode(faqs),
+];
+---
+<Base
+  title="Signs of Rats in Your House | Rats vs. Mice"
+  description="The signs of rats in your house and how to tell Norway rats from house mice: droppings, rub marks, burrows, and sounds. Kansas City guide. Call 816-339-8830."
+  path={path}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / <a href="/blog/">Rat Guides</a> / Signs of Rats</p>
+    <span class="kicker"><span class="dot"></span> Identify</span>
+    <h1>Signs of Rats in Your House: Rats vs. Mice</h1>
+    <p class="lede">Getting the animal right decides the whole plan, because rat control works at the ground line and mouse control works everywhere else. Here is how to read the signs in a Kansas City home.</p>
+  </div></div>
+  <div class="article"><div class="wrap article-grid">
+    <div class="prose">
+      <p>The evidence tells you what you are dealing with before you ever see the animal. In Kansas City, that usually means a Norway rat or a house mouse, and the signs separate them clearly once you know what to look for.</p>
+      <h2>Droppings</h2>
+      <p>Droppings are the most reliable tell. Norway rat droppings are dark and capsule-shaped, about three quarters of an inch long, and tend to cluster near the foundation, the furnace, or the garage. Mouse droppings are much smaller, about the size of a grain of rice, and scatter along baseboards, in drawers, and under sinks. If the droppings are big and grouped low, think rat. If they are tiny and everywhere, think mouse.</p>
+      <h2>Rub Marks and Gnaw Damage</h2>
+      <p>Rats travel the same paths and leave greasy brown rub marks along walls, pipes, and floor joists where their bodies drag. Their teeth never stop growing, so they gnaw constantly, leaving damage on wood, plastic bins, wiring, and even soft mortar, usually low to the ground. Mice gnaw too, but the damage is finer and higher, often around pantry packaging and stored fabric.</p>
+      <h2>Burrows and Entry Points</h2>
+      <p>This is where the two really differ. Norway rats dig burrows, two to four inch holes with fresh dirt kicked out, along foundations, under sheds, patios, and woodpiles. Mice do not burrow in the yard. They slip through a gap the size of a dime around pipes, under cabinets, and at door bases. Finding outdoor burrows points at a rat problem and shapes where the sealing goes.</p>
+      <h2>Sounds</h2>
+      <p>Noise narrows it down fast. Rats are heavy enough to hear as distinct thumps, dragging, or steady gnawing, usually low in the house, walls, or basement, within an hour or two of dark. Light, fast scratching that moves quickly along walls and ceilings is more likely mice. Daytime rolling or running overhead in the attic can point at squirrels rather than either, which is a different animal and a different fix.</p>
+      <h2>Why It Matters</h2>
+      <p>Rat control and mouse control overlap, but the trap sizes, the entry points, and the sealing differ. Norway rats work the ground line, so their control concentrates on foundations, sewers, and burrows. Mice work everywhere, so their control is about trapping runways and sealing dozens of dime-sized gaps. Getting the animal right is the first step in either. Not sure which you have? A <a href="/rat-inspection-in-kansas-city/">rat inspection</a> confirms it, and you can read the <a href="/mouse-control-in-kansas-city/">mouse control</a> and <a href="/rat-control-in-kansas-city/">rat control</a> pages for each path.</p>
+      <p>If the signs point to a real problem, call {site.phone}. The line is answered day or night, and a local exterminator will tell you what you have and what the fix takes.</p>
+      <h2>Common Questions</h2>
+      <div class="faq">
+        {faqs.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+      </div>
+    </div>
+    <aside class="side">
+      <div class="side-card dark">
+        <h3>Not Sure What You Have?</h3>
+        <p>Describe the signs and a local exterminator will identify it. No obligation.</p>
+        <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Answered day or night</small></span></a>
+      </div>
+      <div class="side-card">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="/rat-inspection-in-kansas-city/">Rat Inspection</a></li>
+          <li><a href="/mouse-control-in-kansas-city/">Mouse Control</a></li>
+          <li><a href="/rat-control-in-kansas-city/">Rat Control</a></li>
+          <li><a href="/blog/how-to-get-rid-of-rats-kansas-city/">How to Get Rid of Rats</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div></div>
+</Base>

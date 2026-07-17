@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const nodes = [breadcrumb([{ name: "Home", path: "/" }, { name: "Disclaimer", path: "/disclaimer/" }])];
+---
+<Base
+  title="Disclaimer | Kansas City Rat Control"
+  description="Disclaimer for Kansas City Rat Control. How the site works and what to verify before hiring an independent local provider."
+  path="/disclaimer/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / Disclaimer</p>
+    <h1>Disclaimer</h1>
+    <p class="lede">Important information about how Kansas City Rat Control works.</p>
+  </div></div>
+  <div class="article"><div class="wrap"><div class="prose" style="max-width:800px;margin:0 auto">
+    <p>{site.brand} is a free service to assist homeowners in connecting with local service providers. All contractors/providers are independent and {site.brand} does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on {site.brand}.</p>
+    <h2>Informational Content</h2>
+    <p>The guides and service descriptions on this site are general information about rats, mice, and rodent control. They are not a substitute for an on-site evaluation by a qualified professional. Every property is different, and the right approach depends on the specific conditions found during an inspection.</p>
+    <h2>No Professional Relationship</h2>
+    <p>Reading this site or contacting the number listed does not create a professional or contractual relationship. Any agreement for services is between you and the independent provider who performs the work.</p>
+    <h2>Contact</h2>
+    <p>Questions can be directed to us by phone at {site.phone}.</p>
+  </div></div></div>
+</Base>

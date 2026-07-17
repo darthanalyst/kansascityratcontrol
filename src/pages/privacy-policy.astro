@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const nodes = [breadcrumb([{ name: "Home", path: "/" }, { name: "Privacy Policy", path: "/privacy-policy/" }])];
+---
+<Base
+  title="Privacy Policy | Kansas City Rat Control"
+  description="Privacy policy for Kansas City Rat Control, covering how calls and information submitted through the site are handled."
+  path="/privacy-policy/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / Privacy Policy</p>
+    <h1>Privacy Policy</h1>
+    <p class="lede">How Kansas City Rat Control handles the information you share when you call or reach out through this site.</p>
+  </div></div>
+  <div class="article"><div class="wrap"><div class="prose" style="max-width:800px;margin:0 auto">
+    <p>This Privacy Policy explains how Kansas City Rat Control ("we," "us," or "the site") handles information collected through this website and by phone. By using the site or calling the number listed, you agree to the practices described here.</p>
+    <h2>Information We Collect</h2>
+    <p>When you contact us by phone or through a form on the site, you may provide information such as your name, phone number, address, and a description of the rodent problem at your property. Our servers and analytics tools may also record standard technical data such as your IP address, browser type, pages viewed, and referring site.</p>
+    <h2>How Information Is Used</h2>
+    <p>Information you provide is used to understand your request and to share with an independent local service provider who can help with rat or rodent control at your property. A phone call or submission may be processed and shared with a service provider so they can respond to your request. We may also use aggregate, non-identifying data to understand and improve how the site performs.</p>
+    <h2>How Information Is Shared</h2>
+    <p>We share the details of your request with an independent service provider in your area so they can contact you and provide service. We do not sell your personal information for unrelated marketing. Service providers are independent businesses responsible for their own privacy practices once they receive your request.</p>
+    <h2>Calls and Messages</h2>
+    <p>Calls may be routed or recorded for quality and handling. If you submit a phone number, you consent to being contacted about your request by phone, text, or email. Message and data rates may apply. You can ask to stop receiving messages at any time.</p>
+    <h2>Cookies and Analytics</h2>
+    <p>The site may use cookies and analytics services to measure traffic and improve the experience. You can control cookies through your browser settings. Disabling cookies may affect how parts of the site function.</p>
+    <h2>Your Choices</h2>
+    <p>You may request that we not contact you further or that we remove information you submitted, subject to any legal obligations to retain records. To make a request, use the contact details on the site.</p>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Changes take effect when posted on this page.</p>
+    <h2>Contact</h2>
+    <p>Questions about this policy can be directed to us by phone at {site.phone}.</p>
+  </div></div></div>
+</Base>

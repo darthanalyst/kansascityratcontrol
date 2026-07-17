@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const nodes = [breadcrumb([{ name: "Home", path: "/" }, { name: "About", path: "/about-us/" }])];
+---
+<Base
+  title="About Kansas City Rat Control | Rats & Rodents Only"
+  description="About Kansas City Rat Control: a rats-only service for Norway rats and mice across the KC metro. Metal sealing, upfront estimates, no obligation. 816-339-8830."
+  path="/about-us/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / About</p>
+    <span class="kicker"><span class="dot"></span> Rats and rodents only</span>
+    <h1>About Kansas City Rat Control</h1>
+    <p class="lede">One focus, done well: getting rats and mice out of Kansas City homes and keeping them out. Here is how it works and what to expect when you call.</p>
+    <div class="hero-cta">
+      <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · Day or night</small></span></a>
+    </div>
+  </div></div>
+  <div class="article"><div class="wrap article-grid">
+    <div class="prose">
+      <h2>A Rat-Only Focus</h2>
+      <p>Kansas City Rat Control exists for one reason: rats and rodents. Not ants, not termites, not a spray-everything pest plan. When you call 816-339-8830, you reach a service built around getting Norway rats and house mice out of Kansas City homes and sealing them out for good. That focus matters, because rats behave differently from insects. They burrow, they travel sewer lines, they climb balloon-frame walls, and they come back through the same gap unless someone closes it with metal.</p>
+      <h2>How We Help</h2>
+      <p>The job of this service is to make getting rat help easy. Describe what is happening at your home, and the call reaches a local exterminator who does the actual work: the inspection, the trapping, and the sealing. The people who show up and solve the problem are local pros who know Kansas City housing, from the century homes of the Northeast and Hyde Park to the postwar ranches of the Northland and the new subdivisions in Johnson County. You get an honest read on the problem and an upfront estimate before any work starts.</p>
+      <h2>Why Local Knowledge Matters Here</h2>
+      <p>Kansas City is Norway rat country. The urban core and older neighborhoods sit on aging clay sewer laterals that rats travel like roads, and stone and block foundations give them ground-level entry. Freeze-thaw winters keep opening fresh gaps. A local exterminator reads those conditions and aims the sealing at the openings that actually matter on your home, instead of setting a few traps and hoping. That local read is the difference between a fix and a season of resetting traps.</p>
+      <h2>What to Expect</h2>
+      <p>Straight answers and no pressure. A local exterminator confirms the species, maps the entry points, removes the active rats, and seals the gaps with metal that holds through a Kansas City winter. You hear the plan and the estimate first, with no obligation to go further than you want. The line is answered day or night, because rats do not keep business hours and neither should the help.</p>
+      <p>Ready to get started? Call {site.phone} and describe what you are seeing or hearing, or read <a href="/how-it-works/">how it works</a> and see the full <a href="/services/">list of rat services</a>.</p>
+    </div>
+    <aside class="side">
+      <div class="side-card dark">
+        <h3>Talk to a Local Exterminator</h3>
+        <p>Describe the problem and get an honest read with an upfront estimate. No obligation.</p>
+        <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Answered day or night</small></span></a>
+      </div>
+      <div class="side-card">
+        <h3>The Basics</h3>
+        <ul>
+          <li>Rats and rodents only</li>
+          <li>Norway rats &amp; house mice</li>
+          <li>Metal sealing, not foam</li>
+          <li>Upfront estimate, no obligation</li>
+          <li>Serving MO &amp; KS metro</li>
+        </ul>
+      </div>
+    </aside>
+  </div></div>
+  <section class="call-band"><div class="wrap">
+    <span class="kicker"><span class="dot"></span> Answered day or night</span>
+    <h2>Got Rats? Make One Call.</h2>
+    <p>Reach a local rat exterminator who works Kansas City rodents only. Honest plan, upfront estimate, no obligation.</p>
+    <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · KC metro</small></span></a>
+  </div></section>
+</Base>
