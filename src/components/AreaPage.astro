@@ -1,0 +1,91 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav, areaNav } from "../data/site.js";
+import { serviceNode, breadcrumb, faqNode } from "../lib/schema.js";
+const { area } = Astro.props;
+const path = `/${area.slug}/`;
+const nodes = [
+  serviceNode({
+    name: `Rat Control in ${area.city}, ${area.region}`,
+    serviceType: "Rat control",
+    description: area.metaDesc,
+    path,
+    cities: [{ name: area.city, region: area.region }],
+  }),
+  breadcrumb([
+    { name: "Home", path: "/" },
+    { name: "Service Areas", path: "/service-areas/" },
+    { name: `${area.city}, ${area.region}`, path },
+  ]),
+];
+if (area.faqs && area.faqs.length) nodes.push(faqNode(area.faqs));
+const otherAreas = areaNav.filter((a) => a.slug !== area.slug);
+---
+<Base title={area.metaTitle} description={area.metaDesc} path={path}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / <a href="/service-areas/">Service Areas</a> / {area.city}, {area.region}</p>
+    <span class="kicker"><span class="dot"></span> Serving {area.city} and nearby</span>
+    <h1>Rat Control in {area.city}, {area.region}</h1>
+    <p class="lede">{area.lead}</p>
+    <div class="hero-cta">
+      <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · Day or night</small></span></a>
+    </div>
+  </div></div>
+
+  <div class="article"><div class="wrap article-grid">
+    <div class="prose">
+      {area.intro.map((p) => <p set:html={p} />)}
+      <h2>{area.localHead}</h2>
+      {area.local.map((p) => <p set:html={p} />)}
+      <h2>Rat &amp; Rodent Services in {area.city}</h2>
+      <ul>
+        <li><strong><a href="/rat-control-in-kansas-city/">Rat control</a>.</strong> Norway rat removal, burrow work, and metal foundation sealing.</li>
+        <li><strong><a href="/rat-exterminator-in-kansas-city/">Rat exterminator</a>.</strong> Trapping on active runways, placed safely around kids and pets.</li>
+        <li><strong><a href="/rat-removal-in-kansas-city/">Rat removal</a>.</strong> Live rats out of walls, garages, and yards, then sealed out.</li>
+        <li><strong><a href="/rodent-exclusion-in-kansas-city/">Rodent exclusion</a>.</strong> Metal sealing at foundations, vents, doors, and utility lines.</li>
+        <li><strong><a href="/attic-rat-cleanup-in-kansas-city/">Attic rat cleanup</a>.</strong> Nests, soiled insulation, and droppings cleared and disinfected.</li>
+        <li><strong><a href="/mouse-control-in-kansas-city/">Mouse control</a>.</strong> Trapping plus mouse-proofing the dime-sized gaps.</li>
+      </ul>
+      <h2>{area.whyHead}</h2>
+      {area.why.map((p) => <p set:html={p} />)}
+      <h2>{area.city} Rat Control Questions</h2>
+      <div class="faq">
+        {area.faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+    <aside class="side">
+      <div class="side-card dark">
+        <h3>Call About {area.city}</h3>
+        <p>Describe the property and the problem, and get an honest plan with an upfront estimate. No obligation.</p>
+        <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Answered day or night</small></span></a>
+      </div>
+      <div class="side-card">
+        <h3>Nearby Areas</h3>
+        <ul>
+          <li><a href="/service-areas/">Kansas City Metro</a></li>
+          {otherAreas.slice(0, 7).map((a) => <li><a href={`/${a.slug}/`}>{a.label}</a></li>)}
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>Rat Services</h3>
+        <ul>
+          {serviceNav.slice(0, 6).map((s) => <li><a href={`/${s.slug}/`}>{s.label}</a></li>)}
+        </ul>
+      </div>
+    </aside>
+  </div></div>
+
+  <section class="call-band"><div class="wrap">
+    <span class="kicker"><span class="dot"></span> Answered day or night</span>
+    <h2>Rats in {area.city}? Make One Call.</h2>
+    <p>Reach a local rat exterminator who knows {area.city} housing and how rodents get in. Honest plan, upfront estimate, no obligation.</p>
+    <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · {area.city}, {area.region}</small></span></a>
+  </div></section>
+</Base>

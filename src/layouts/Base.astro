@@ -1,0 +1,152 @@
+---
+import { site, serviceNav, areaNav } from "../data/site.js";
+import { orgNode, websiteNode } from "../lib/schema.js";
+const { title, description, path = "/", canonical } = Astro.props;
+const canon = canonical || site.url + path;
+const sitewide = [orgNode(), websiteNode()];
+const year = new Date().getFullYear();
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canon} />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canon} />
+<meta property="og:site_name" content={site.brand} />
+<meta property="og:image" content={site.url + "/images/hero.jpg"} />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Roboto+Slab:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<script type="application/ld+json" set:html={JSON.stringify(sitewide)} />
+<slot name="head" />
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-rat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="13" r="5"/><circle cx="5.5" cy="9.5" r="1.8"/><circle cx="10.5" cy="9.5" r="1.8"/><circle cx="8" cy="13" r="1"/><path d="M13 13c4 0 6 1 8 4.5"/></symbol>
+  <symbol id="i-mouse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="4.5"/><circle cx="7.5" cy="10.5" r="1.6"/><circle cx="12.5" cy="10.5" r="1.6"/><path d="M14.2 14.5c3 0 4.5 .8 6 2.8"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="m9 15 2 2 4-4"/></symbol>
+  <symbol id="i-trap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="11" rx="1"/><path d="M3 9 19 5"/><circle cx="8" cy="14.5" r="1.6"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l7-4 7 4v14"/><path d="M17 11h4v10M3 21h18"/><path d="M7 9v0M7 13v0M7 17v0M13 9v0M13 13v0M13 17v0"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.3a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 3 5.5v15L9 18l6 3 6-2.5v-15L15 6 9 3z"/><path d="M9 3v15M15 6v15"/></symbol>
+</defs></svg>
+
+<div class="topbar"><div class="wrap">
+  <span class="rating"><span class="stars">★★★★★</span> Rats only. Metal sealing that lasts.</span>
+  <span class="tb-right">
+    <span class="serve">Serving the Kansas City metro, MO &amp; KS</span>
+    <a href="/service-areas/">Service Areas</a>
+  </span>
+</div></div>
+
+<header class="site-header">
+  <div class="nav">
+    <a href="/" class="brand" aria-label={site.brand + " home"}>
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#0b2b4e"/>
+        <path d="M6 42 L32 24 L58 42" fill="none" stroke="#f6b41c" stroke-width="3.4" stroke-linejoin="round"/>
+        <path d="M12 40v14h40V40" fill="none" stroke="#e8f1fb" stroke-width="2.4"/>
+        <g fill="#e8f1fb"><circle cx="27" cy="46" r="5"/><circle cx="23.2" cy="42.8" r="2"/><circle cx="30.8" cy="42.8" r="2"/><circle cx="27" cy="46" r="1.1"/></g>
+        <path d="M33 46c5 0 7 1.4 9.6 4.2" fill="none" stroke="#e8f1fb" stroke-width="2.1" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">Kansas City<br/>Rat Control<small>NORWAY RATS &amp; MICE</small></span>
+    </a>
+    <div class="header-phone">
+      <span class="hp-badge">
+        <b>Answered day or night</b>
+        <span class="hp-num">{site.phone}</span>
+      </span>
+      <a class="nav-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('subnav').classList.toggle('open')"><svg><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<div class="subnav" id="subnav"><div class="wrap">
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <div class="has-sub" tabindex="0">
+      <a href="/services/" class="sub-toggle">Rat Services ▾</a>
+      <div class="submenu">
+        {serviceNav.map((s) => <a href={`/${s.slug}/`}>{s.label}</a>)}
+        <a href="/services/">All Rat Services</a>
+      </div>
+    </div>
+    <div class="has-sub" tabindex="0">
+      <a href="/service-areas/" class="sub-toggle">Service Areas ▾</a>
+      <div class="submenu">
+        <a href="/service-areas/">Kansas City Metro</a>
+        {areaNav.map((a) => <a href={`/${a.slug}/`}>{a.label}</a>)}
+      </div>
+    </div>
+    <a href="/how-it-works/">How It Works</a>
+    <a href="/about-us/">About</a>
+    <a href="/blog/">Rat Guides</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</div></div>
+
+<main>
+  <slot />
+</main>
+
+<footer class="site-footer">
+  <div class="footer-call-row">
+    <h2>Hearing something in the walls tonight?</h2>
+    <a class="giant-phone" href={site.phoneHref}>{site.phone}<small>ANSWERED DAY OR NIGHT · KANSAS CITY, MO &amp; KS</small></a>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <svg class="fmark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#12406f"/><path d="M6 42 L32 24 L58 42" fill="none" stroke="#f6b41c" stroke-width="3.4" stroke-linejoin="round"/><g fill="#e8f1fb"><circle cx="27" cy="46" r="5"/><circle cx="23.2" cy="42.8" r="2"/><circle cx="30.8" cy="42.8" r="2"/></g><path d="M33 46c5 0 7 1.4 9.6 4.2" fill="none" stroke="#e8f1fb" stroke-width="2.1" stroke-linecap="round"/></svg>
+      <h4>{site.brand}</h4>
+      <p>Rat control for Kansas City and the surrounding metro on both sides of the state line. Norway rats and mice handled by a local exterminator: inspection, trapping, and metal entry-point sealing that holds through a freeze-thaw winter.</p>
+    </div>
+    <div>
+      <h4>Rat Services</h4>
+      <ul>
+        {serviceNav.map((s) => <li><a href={`/${s.slug}/`}>{s.label}</a></li>)}
+        <li><a href="/services/">All Rat Services</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Areas &amp; Company</h4>
+      <ul>
+        <li><a href="/service-areas/">Kansas City Metro</a></li>
+        {areaNav.slice(0, 8).map((a) => <li><a href={`/${a.slug}/`}>{a.label}</a></li>)}
+        <li><a href="/how-it-works/">How It Works</a></li>
+        <li><a href="/about-us/">About Us</a></li>
+        <li><a href="/blog/">Rat Guides</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="disclaimer">{site.brand} is a free service to assist homeowners in connecting with local service providers. All contractors/providers are independent and {site.brand} does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on {site.brand}.</p>
+    <div class="copyright">© {year} {site.brand}. All rights reserved. · <a href="/privacy-policy/" style="color:#9db8d4">Privacy</a> · <a href="/terms/" style="color:#9db8d4">Terms</a> · <a href="/disclaimer/" style="color:#9db8d4">Disclaimer</a></div>
+  </div>
+</footer>
+
+<a class="mobile-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Tap to Call · {site.phone}</a>
+
+</body>
+</html>

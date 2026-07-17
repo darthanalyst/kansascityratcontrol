@@ -1,0 +1,83 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav, areaNav } from "../data/site.js";
+import { serviceNode, breadcrumb, faqNode } from "../lib/schema.js";
+const { svc } = Astro.props;
+const path = `/${svc.slug}/`;
+const nodes = [
+  serviceNode({ name: svc.h1, serviceType: svc.serviceType, description: svc.metaDesc, path }),
+  breadcrumb([
+    { name: "Home", path: "/" },
+    { name: "Rat Services", path: "/services/" },
+    { name: svc.crumb, path },
+  ]),
+];
+if (svc.faqs && svc.faqs.length) nodes.push(faqNode(svc.faqs));
+const others = serviceNav.filter((s) => s.slug !== svc.slug);
+---
+<Base title={svc.metaTitle} description={svc.metaDesc} path={path}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(nodes)} />
+
+  <div class="page-hero"><div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / <a href="/services/">Rat Services</a> / {svc.crumb}</p>
+    <span class="kicker"><span class="dot"></span> {svc.kicker}</span>
+    <h1>{svc.h1}</h1>
+    <p class="lede">{svc.lead}</p>
+    <div class="hero-cta">
+      <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · Day or night</small></span></a>
+    </div>
+  </div></div>
+
+  <div class="article"><div class="wrap article-grid">
+    <div class="prose">
+      <img src={svc.img} alt={svc.heroAlt} width="820" height="462" loading="eager" />
+      {svc.intro.map((p) => <p set:html={p} />)}
+      {svc.sections.map((sec) => (
+        <>
+          <h2>{sec.h2}</h2>
+          {sec.body.map((p) => <p set:html={p} />)}
+          {sec.list && <ul>{sec.list.map((li) => <li set:html={li} />)}</ul>}
+        </>
+      ))}
+      <h2>{svc.whyHead}</h2>
+      {svc.why.map((p) => <p set:html={p} />)}
+      <h2>{svc.faqHead}</h2>
+      <div class="faq">
+        {svc.faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+    <aside class="side">
+      <div class="side-card dark">
+        <h3>Talk It Through</h3>
+        <p>Describe what you are seeing or hearing and get an honest read with an upfront estimate. No obligation.</p>
+        <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Answered day or night</small></span></a>
+      </div>
+      <div class="side-card">
+        <h3>Other Rat Services</h3>
+        <ul>
+          {others.slice(0, 6).map((s) => <li><a href={`/${s.slug}/`}>{s.label}</a></li>)}
+          <li><a href="/how-it-works/">How It Works</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>Service Areas</h3>
+        <ul>
+          <li><a href="/service-areas/">Kansas City Metro</a></li>
+          {areaNav.slice(0, 5).map((a) => <li><a href={`/${a.slug}/`}>{a.label}</a></li>)}
+        </ul>
+      </div>
+    </aside>
+  </div></div>
+
+  <section class="call-band"><div class="wrap">
+    <span class="kicker"><span class="dot"></span> Answered day or night</span>
+    <h2>Stop Listening to the Walls</h2>
+    <p>One call reaches a local rat exterminator who works Kansas City rodents only. Describe the problem, get an honest plan and an upfront estimate.</p>
+    <a class="btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg><span>{site.phone}<small>Tap to call · KC metro</small></span></a>
+  </div></section>
+</Base>
