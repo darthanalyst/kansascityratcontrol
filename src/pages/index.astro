@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { site, serviceNav, areaNav, counties } from "../data/site.js";
+import { site, serviceNav, areaNav, counties, IMG } from "../data/site.js";
 import { itemListNode, faqNode, breadcrumb } from "../lib/schema.js";
 
 const problems = [
@@ -81,7 +81,7 @@ const nodes = [
         </div>
       </div>
       <div class="hero-photo">
-        <div class="ring"><img src="/images/hero.jpg" alt="A Kansas City street of older brick and frame homes at dusk under a winter sky" width="560" height="560" loading="eager" fetchpriority="high" /></div>
+        <div class="ring"><img src={IMG.hero} alt="The Kansas City downtown skyline at dusk" width="560" height="560" loading="eager" fetchpriority="high" /></div>
         <span class="tag">SERVING THE KC METRO · MO &amp; KS</span>
         <div class="float f1"><svg><use href="#i-clock"/></svg> Answered day or night</div>
         <div class="float f2"><svg><use href="#i-shield"/></svg> Sealed to stay out</div>
@@ -184,7 +184,7 @@ const nodes = [
     <div class="svc-grid">
       {serviceNav.map((s) => (
         <article class="svc">
-          <img src={s.img} alt={svcAlt[s.slug]} width="380" height="214" loading="lazy" />
+          <img src={IMG[s.slug]} alt={svcAlt[s.slug]} width="380" height="214" loading="lazy" />
           <div class="svc-body">
             <h3><a href={`/${s.slug}/`}>{s.label}</a></h3>
             <p>{svcBlurb[s.slug]}</p>
